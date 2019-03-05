@@ -1,0 +1,571 @@
+<div class="m-demo" data-code-preview="true" data-code-html="true" data-code-js="false">
+    <a (click)="BackToForm()" class="btn btn-brand m-btn m-btn--icon" style="Display:table">
+      <span>
+        <i class="la la-angle-double-left"></i>
+        <span>Back to Input Form</span>
+      </span>
+    </a>
+</div>
+
+
+<ngb-tabset *ngIf="res !== undefined">
+  <ngb-tab>
+    <ng-template ngbTabTitle><b>Results</b></ng-template>
+    <ng-template ngbTabContent>
+              <table class="table table-striped m-table m-table--head-bg-brand">
+                <thead>
+                  <tr>
+                      <th colspan="2">
+                          Main Results
+                      </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngIf="solution.CurrentQhot<=solution.Qhot || solution.CurrentQcold<=solution.Qcold">
+                        <th colspan="2" style="text-align: -webkit-center">
+                            <span  class="m-alert m-alert--icon alert alert-warning" role="alert">
+                                <div class="m-alert__icon">
+                                    <i class="la la-warning"></i>
+                                </div>
+                                <div class="m-alert__text">
+                                      <strong>The approach temperature entered is higher than actual approach temperature</strong> 
+                                </div>	
+                                <div class="m-alert__close">
+                                    <button type="button" class="close" data-close="alert" aria-label="Hide">
+                                    </button>	
+                                </div>			  	
+                          </span>
+                        </th>
+                    </tr>
+                    <tr>
+                       <th scope="row">Pinch Temperature</th>
+                       <td>{{solution.IntervalTemp.toFixed(2)}}  &nbsp; {{Units.temperature}} </td>
+                    </tr>
+                    <tr>
+                       <th scope="row">Hot Pinch </th>
+                       <td>{{solution.HotIntervalTemp.toFixed(2)}}  &nbsp;  {{Units.temperature}}</td>
+                    </tr>
+                    <tr>
+                       <th scope="row">Cold Pinch</th>
+                       <td>{{solution.ColdIntervalTemp.toFixed(2)}}  &nbsp;  {{Units.temperature}}</td>
+                    </tr>
+                    <tr>
+                        <th colspan="2">
+                          <table class="table table-sm m-table m-table--head-bg-success">
+                            <thead class="thead-inverse">
+                                <tr>
+                                    <th>#</th>
+                                    <th>Current ( {{Units.temperature}} )</th>
+                                    <th>Input ( {{Units.temperature}} )</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                      <th scope="row">Approach Temperature</th>
+                                      <td>{{(solution.CurrentApproachTemp).toFixed(2)}}</td>
+                                      <td>{{body.Approach}}</td>
+                                      <td></td>
+                                </tr>
+                            </tbody>
+                            <thead class="thead-inverse">
+                              <tr>
+                                  <th>#</th>
+                                  <th>Current ( {{Units.duty}} )</th>
+                                  <th>Optimum ( {{Units.duty}} )</th>
+                                  <th>Percentage Change</th>
+                              </tr>
+                            </thead>
+                          <tbody>
+                              <tr>
+                                  <th scope="row">Hot Utility Duty</th>
+                                  <td>{{(solution.CurrentQhot/1000000).toFixed(2)}}</td>
+                                  <td>{{(solution.Qhot/1000000).toFixed(2)}}</td>
+                                  <td>{{ ((solution.CurrentQhot-solution.Qhot)*100/(solution.CurrentQhot)).toFixed(2)}} %</td>
+                              </tr>
+                              <tr>
+                                  <th scope="row">Cold Utility Duty</th>
+                                  <td>{{(solution.CurrentQcold/1000000).toFixed(2)}}</td>
+                                  <td>{{(solution.Qcold/1000000).toFixed(2)}}</td>
+                                  <td>{{((solution.CurrentQcold-solution.Qcold)*100/(solution.CurrentQcold)).toFixed(2)}} %</td>
+                              </tr>
+                              <tr>
+                                  <th scope="row">Heat Recovery</th>
+                                  <td>{{(solution.CurrentHeatRecovery/1000000).toFixed(2)}}</td>
+                                  <td>{{(solution.MaxHeatRecovery/1000000).toFixed(2)}}</td>
+                                  <td>
+                                    <span *ngIf="solution.CurrentHeatRecovery != 0; else elseBlock">{{((solution.MaxHeatRecovery-solution.CurrentHeatRecovery)*100/(solution.CurrentHeatRecovery)).toFixed(2)}} % </span>
+                                    <ng-template #elseBlock > N/A </ng-template>
+                                  </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                      </th>
+                    </tr>
+                    <tr>
+                      <th scope="row" colspan="2">
+                          <button type="button" class="btn btn-success m-btn m-btn--air m-btn--custom" (click)="saveCase('','','')" [disabled]="saveCaseButtonDisabled">
+                              Save to your cases
+                          </button>
+                        </th>
+                      </tr>   
+                      <tr>
+                        <td colspan="2">
+                          <table class="table table-sm m-table m-table--head-bg-success" *ngIf="HotUtilities.count !== 0 || ColdUtilities.count !== 0">
+                              <thead>
+                                <tr>
+                                  <th colspan="7">
+                                    Utilities
+                                  </th>
+                                </tr>
+                                <tr>
+                                  <th colspan="3">
+                                    Hot Utilities
+                                  </th>
+                                  <th></th>
+                                  <th colspan="3">
+                                    Cold Utilities
+                                  </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                              <td colspan="3">
+                                <table class="table table-sm m-table m-table--head-bg-success">
+                                  <thead>
+                                    <tr>
+                                        <th>Utility Name</th>
+                                        <th>Current Duty ({{Units.duty}})</th>
+                                        <th>Optimum Duty ({{Units.duty}})</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                      <tr *ngFor="let utility of HotUtilitiesResult">
+                                          <th scope="row"> {{utility.name}} </th>
+                                          <td>{{utility.currentDuty}}</td>
+                                          <td *ngIf="body !== undefined">{{utility.optimumDuty}}</td>
+                                      </tr>
+                                  </tbody>
+                                </table>
+                              </td>
+                              <td></td>
+                              <td colspan="3">
+                                  <table class="table table-sm m-table m-table--head-bg-success">
+                                      <thead>
+                                        <th>Utility Name</th>
+                                        <th>Current Duty ({{Units.duty}})</th>
+                                        <th>Optimum Duty ({{Units.duty}})</th>
+                                      </thead>
+                                      <tbody>
+                                          <tr *ngFor="let utility of ColdUtilitiesResult">
+                                              <th scope="row"> {{utility.name}} </th>
+                                              <td>{{utility.currentDuty}}</td>
+                                              <td *ngIf="body !== undefined">{{utility.optimumDuty}}</td>
+                                          </tr>
+                                      </tbody>
+                                    </table>
+                              </td>
+                              </tr>
+                      </tbody>
+                          </table>
+                        </td>
+                      </tr>                          
+                  </tbody>
+              </table> 
+    </ng-template>
+  </ngb-tab>
+
+    <ngb-tab>
+        <ng-template ngbTabTitle><b>Input Streams</b></ng-template>
+        <ng-template ngbTabContent>
+            <div *ngIf="body.hotStreams !== undefined; else elseTable" class="text-align:center">
+                <table class="table text-center">
+                   <tbody>
+                     <tr>
+                       <td>
+
+                        <table class="table m-table m-table--head-bg-brand">
+                           <thead style="background-color:#262734; color:white">
+                             <tr>
+                               <th  colspan="7">Hot Streams       
+                               </th>
+                             </tr>
+                              <tr>
+                                <th>#</th>
+                                <th>Stream Name</th>
+                                <th>Supply Temperature ({{Units.temperature}})</th>
+                                <th>Target Temperature ({{Units.temperature}})</th> 
+                                <th><span *ngIf="body.DutyType === 0; else elseBlock">Duty ({{Units.duty}})</span>
+                                    <ng-template #elseBlock>m * Cp ({{Units.duty}})</ng-template>
+                                </th>
+                                <th> Utility Matching<th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr *ngFor="let stream of body.hotStreams; let i = index">
+                                <td>{{i+1}}</td>
+                                <td>{{stream.Name}}</td>
+                                <td>{{stream.Supply.toFixed(2)}}</td>
+                                <td>{{stream.Target.toFixed(2)}}</td>
+                                <td>{{(stream.Duty/1000000).toFixed(2)}}</td> 
+                                <td>{{stream.Utility}} </td>
+                              </tr>
+                            </tbody>
+                        </table>
+
+                       </td>
+                       <td>
+                        <table class="table m-table m-table--head-bg-brand">
+                          <thead style="background-color:#262734; color:white">
+                             <tr>
+                                <th colspan="6"> Cold Streams</th></tr>
+                                  <tr>
+                                  <th>#</th>
+                                  <th>Stream Name</th>
+                                  <th>Supply Temperature ({{Units.temperature}})</th>
+                                  <th>Target Temperature ({{Units.temperature}})</th> 
+                                  <th>
+                                          <span *ngIf="body.DutyType === 0; else elseBlock">Duty ({{Units.duty}})</span>
+                                          <ng-template #elseBlock>m * Cp ({{Units.duty}})</ng-template>
+                                  </th>
+                                  <th> Utility Matching</th>                                  
+                              </tr>
+                           </thead>
+                           <tbody>
+                             <tr *ngFor="let stream of body.coldStreams; let i = index">
+                                   <td>{{i+1}}</td>
+                                   <td>{{stream.Name}}</td>
+                                   <td>{{stream.Supply.toFixed(2)}}</td>
+                                   <td>{{stream.Target.toFixed(2)}}</td>
+                                   <td>{{(stream.Duty/1000000).toFixed(2)}}</td>
+                                   <td>{{stream.Utility}} </td>
+                             </tr>
+                           </tbody>
+                        </table>
+                      </td>
+                  </tr>
+                 </tbody>
+                </table>
+            </div>
+                   
+            <ng-template #elseTable class="table table-condensed text-center">
+                <table class="table m-table m-table--head-bg-brand">
+                    <thead style="background-color:#262734; color:white">
+                                <tr >
+                                        <th rowspan="2"> #</th>
+                                        <th rowspan="2">Heat Exchanger</th>
+                                        <th rowspan="2"> Exchanger Name </th> 
+                                        <th colspan="2"> Hot Side </th> 
+                                        <th colspan="2"> Cold Side </th>
+                                        <th rowspan="2"> 
+                                                <span *ngIf="body.DutyType === 0; else elseBlock">Duty ({{Units.duty}})</span>
+                                                <ng-template #elseBlock>m * Cp ({{Units.duty}})</ng-template>
+                                        </th>
+                                        <th rowspan="2"> Utility <th>
+                                 </tr>
+                                 <tr>
+                                     <th> Supply Temperature ({{Units.temperature}})</th> 
+                                     <th> Target Temperature ({{Units.temperature}})</th> 
+                                     <th> Supply Temperature ({{Units.temperature}})</th>
+                                     <th> Target Temperature ({{Units.temperature}})</th>
+                                  </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let exchanger of body.Exchangers; let i = index">
+                                <td>{{i+1}}</td>
+                                <td>
+                                        <span *ngIf="exchanger.coldGroup !== undefined && exchanger.hotGroup!== undefined;else elseBlock">Heat Exchanger</span>
+                                        <ng-template #elseBlock>
+                                                <span *ngIf="exchanger.coldGroup !== undefined; else elseUtility" >Heater</span>
+                                                <ng-template #elseUtility>Cooler</ng-template>
+                                        </ng-template>
+                                        
+                                </td>
+                                <td>{{exchanger.Name}}</td>
+                                <td> <span *ngIf="exchanger.hotGroup !== undefined">{{exchanger.hotGroup.hotSupply}}</span></td>
+                                <td> <span *ngIf="exchanger.hotGroup !== undefined">{{exchanger.hotGroup.hotTarget}}</span></td>
+                                <td> <span *ngIf="exchanger.coldGroup !== undefined">{{exchanger.coldGroup.coldSupply}}</span></td>
+                                <td> <span *ngIf="exchanger.coldGroup !== undefined">{{exchanger.coldGroup.coldTarget}}</span></td>
+                                <td>{{exchanger.Duty/1000000}}</td>
+                                <td>{{exchanger.UtilityMatch}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                    
+                    </ng-template>
+        </ng-template>
+    </ngb-tab>
+
+    <ngb-tab *ngIf="(HotUtilities.count !== 0) || (ColdUtilities.count !== 0)">
+      <ng-template ngbTabTitle><b>Input Utilities</b></ng-template>
+      <ng-template ngbTabContent>
+          <div class="text-align:center">
+              <table class="table text-center">
+                 <tbody>
+                   <tr>
+                     <td>
+
+                      <table class="table m-table m-table--head-bg-brand">
+                         <thead style="background-color:#262734; color:white">
+                           <tr>
+                             <th  colspan="5">Hot Utilities</th>
+                           </tr>
+                            <tr>
+                              <th>#</th>
+                              <th>Utility Name</th>
+                              <th>Supply Temperature ({{Units.temperature}})</th>
+                              <th>Target Temperature ({{Units.temperature}})</th> 
+                              <th>Utility Approach ({{Units.temperature}})</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr *ngFor="let stream of body.hotUtilityStreams; let i = index">
+                              <td>{{i+1}}</td>
+                              <td>{{stream.Name}}</td>
+                              <td>{{stream.Supply.toFixed(2)}}</td>
+                              <td>{{stream.Target.toFixed(2)}}</td>
+                              <td>{{stream.UtilityApproach.toFixed(2)}}</td> 
+                            </tr>
+                          </tbody>
+                      </table>
+
+                     </td>
+                     <td>
+                      <table class="table m-table m-table--head-bg-brand">
+                        <thead style="background-color:#262734; color:white">
+                           <tr>
+                              <th colspan="5"> Cold Utilities</th></tr>
+                                <tr>
+                                <th>#</th>
+                                <th>Utility Name</th>
+                                <th>Supply Temperature ({{Units.temperature}})</th>
+                                <th>Target Temperature ({{Units.temperature}})</th> 
+                                <th>Utility Approach ({{Units.temperature}})</th>
+                            </tr>
+                         </thead>
+                         <tbody>
+                           <tr *ngFor="let stream of body.coldUtilityStreams; let i = index">
+                                 <td>{{i+1}}</td>
+                                 <td>{{stream.Name}}</td>
+                                 <td>{{stream.Supply.toFixed(2)}}</td>
+                                 <td>{{stream.Target.toFixed(2)}}</td>
+                                 <td>{{stream.UtilityApproach.toFixed(2)}}</td> 
+                           </tr>
+                         </tbody>
+                      </table>
+                    </td>
+                </tr>
+               </tbody>
+              </table>
+          </div>
+      </ng-template>
+    </ngb-tab>
+
+  <ngb-tab>
+      <ng-template ngbTabTitle><b>T-H Diagram</b></ng-template>
+      <ng-template ngbTabContent>
+        <nvd3 [options]="HT_DiagramOptions" [data]="HT_DiagramData" #HTDiagram ></nvd3>
+        <div class="m-stack m-stack--ver m-stack--general m-stack--demo">
+          <!-- <div class="m-stack__item m-stack__item--center m-stack__item--middle">
+            <button  class="btn btn-primary" (click)="ExportImage('HT')"> Save Chart as PNG</button>
+          </div> -->
+          <div class="m-stack__item m-stack__item--center m-stack__item--middle">
+            <form  [formGroup]="THCommentForm" (ngSubmit)="manipulateComment('TH',THCommentForm.value)">
+                <label for="exampleTextarea">Add comment</label>
+                <textarea  formControlName="comment" class="form-control m-input"></textarea> <br/>
+                <input type="submit" class="btn btn-primary" value="Save Case with Comment">
+            </form>
+          </div>
+        </div>
+        <div class="m-stack m-stack--ver m-stack--general m-stack--demo" [ngStyle]="{'display':THComment===''?'none':'block'}">
+            <div class="m-portlet">
+                <div class="m-portlet__head">
+                  <div class="m-portlet__head-caption">
+                    <div class="m-portlet__head-title">
+                      <span class="m-portlet__head-icon">
+                        <i class="la la-thumb-tack m--font-primary"></i>
+                      </span>
+                      <h3 class="m-portlet__head-text m--font-primary">
+                        Comment to T-H Diagram
+                      </h3>
+                    </div>			
+                  </div>
+                  <div class="m-portlet__head-tools">
+                    <ul class="m-portlet__nav">
+                      <li class="m-portlet__nav-item">
+                        <a href="#" class="m-portlet__nav-link btn btn-primary m-btn m-btn--hover-primary m-btn--icon m-btn--icon-only m-btn--pill" (click)="manipulateComment('TH', '')">
+                          <i class="la la-close"></i>
+                        </a>
+                      </li>						
+
+                    </ul>
+                  </div>
+                </div>
+                <div class="m-portlet__body">
+                 {{THComment}}
+                </div>
+              </div>
+        </div>
+      </ng-template>
+  </ngb-tab>
+
+ 
+  <ngb-tab>
+      <ng-template ngbTabTitle><b>GCC Diagram</b></ng-template>
+      <ng-template ngbTabContent>
+          <nvd3 [options]="GCC_DiagramOptions" [data]="GCC_DiagramData"></nvd3>
+            <div class="m-stack m-stack--ver m-stack--general m-stack--demo">
+              <!-- <div class="m-stack__item m-stack__item--center m-stack__item--middle">
+                <button  class="btn btn-primary" (click)="ExportImage('HT')"> Save Chart as PNG</button>
+              </div> -->
+              <div class="m-stack__item m-stack__item--center m-stack__item--middle">
+                <form  [formGroup]="GCCCommentForm" (ngSubmit)="manipulateComment('GCC',GCCCommentForm.value)">
+                    <label for="exampleTextarea">Add comment</label>
+                    <textarea  formControlName="comment" class="form-control m-input"></textarea> <br/>
+                    <input type="submit" class="btn btn-primary" value="Save Case with Comment">
+                </form>
+              </div>
+            </div>
+            <div class="m-stack m-stack--ver m-stack--general m-stack--demo" [ngStyle]="{'display':GCCComment===''?'none':'block'}">
+                <div class="m-portlet">
+                    <div class="m-portlet__head">
+                      <div class="m-portlet__head-caption">
+                        <div class="m-portlet__head-title">
+                          <span class="m-portlet__head-icon">
+                            <i class="la la-thumb-tack m--font-primary"></i>
+                          </span>
+                          <h3 class="m-portlet__head-text m--font-primary">
+                            Comment to GCC Diagram
+                          </h3>
+                        </div>			
+                      </div>
+                      <div class="m-portlet__head-tools">
+                        <ul class="m-portlet__nav">
+                          <li class="m-portlet__nav-item">
+                            <a href="#" class="m-portlet__nav-link btn btn-primary m-btn m-btn--hover-primary m-btn--icon m-btn--icon-only m-btn--pill" (click)="manipulateComment('GCC', '')">
+                              <i class="la la-close"></i>
+                            </a>
+                          </li>						
+    
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="m-portlet__body">
+                     {{GCCComment}}
+                    </div>
+                  </div>
+            </div>
+      </ng-template>
+  </ngb-tab>
+
+  <ngb-tab>
+    <ng-template ngbTabTitle><b>Grid Diagram</b></ng-template>
+    <ng-template ngbTabContent>
+        <nvd3 [options]="Grid_DiagramOptions" [data]="Grid_DiagramData"></nvd3>
+        
+        <div class="m-stack m-stack--ver m-stack--general m-stack--demo">
+            <!-- <div class="m-stack__item m-stack__item--center m-stack__item--middle">
+              <button  class="btn btn-primary" (click)="ExportImage('Grid')"> Save Chart as PNG</button>
+            </div> -->
+            <div class="m-stack__item m-stack__item--center m-stack__item--middle">
+                <label for="exampleTextarea">Grid Diagram Legend</label>
+            <img src='./assets/app/media/img/GridLegend.png'> </div>
+            <div class="m-stack__item m-stack__item--center m-stack__item--middle">
+              <form  [formGroup]="GridCommentForm" (ngSubmit)="manipulateComment('Grid',GridCommentForm.value)">
+                  <label for="exampleTextarea">Add comment</label>
+                  <textarea  formControlName="comment" class="form-control m-input"></textarea> <br/>
+                  <input type="submit" class="btn btn-primary" value="Save Case with Comment">
+              </form>
+            </div>
+          </div>
+          <div class="m-stack m-stack--ver m-stack--general m-stack--demo" [ngStyle]="{'display':GridComment===''?'none':'block'}">
+              <div class="m-portlet">
+                  <div class="m-portlet__head">
+                    <div class="m-portlet__head-caption">
+                      <div class="m-portlet__head-title">
+                        <span class="m-portlet__head-icon">
+                          <i class="la la-thumb-tack m--font-primary"></i>
+                        </span>
+                        <h3 class="m-portlet__head-text m--font-primary">
+                          Comment to Grid Diagram
+                        </h3>
+                      </div>			
+                    </div>
+                    <div class="m-portlet__head-tools">
+                      <ul class="m-portlet__nav">
+                        <li class="m-portlet__nav-item">
+                          <a href="#" class="m-portlet__nav-link btn btn-primary m-btn m-btn--hover-primary m-btn--icon m-btn--icon-only m-btn--pill" (click)="manipulateComment('Grid', '')">
+                            <i class="la la-close"></i>
+                          </a>
+                        </li>						
+  
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="m-portlet__body">
+                   {{GridComment}}
+                  </div>
+                </div>
+          </div>
+    </ng-template>
+  </ngb-tab>
+
+  
+  <ngb-tab>
+    <ng-template ngbTabTitle ><b>Report</b></ng-template>
+    <ng-template ngbTabContent>
+      <div id="Report"></div>
+     <div class="m-section">
+      <form class="m-form" [formGroup]="ReportPagesForm" (ngSubmit)="submitReportPages(ReportPagesForm.value)">
+
+          <div class="m-form__group form-group"> 
+
+            <h4 class="m--font-primary">Check report sections to add:</h4>
+            <div class="m-demo">
+              <div class="m-demo__preview">
+                  <div class="m-checkbox-inline">
+                        <label *ngFor="let page of ReportPagesForm.controls.ReportPages.controls; let i=index" class="m-checkbox m-checkbox--bold m-checkbox--state-brand">
+                        <input type="checkbox" [formControl]="page"> {{ReportPages[i].name}}
+                        <span></span>
+                        </label>
+                  </div>
+               </div>
+               <span class="m-form__help">Customize your report</span>
+            </div>
+            </div>
+          <button type="submit" (click)="generateReport()"  class="btn m-btn btn-primary" id="generateReport" [disabled]="!ReportPagesForm.valid">
+              <span>
+                <i class="la la-eye"></i>
+                <span> Generate Report</span>
+        
+              </span>
+            </button>
+        </form>
+
+      </div>
+        <div style="visibility:hidden">
+           <nvd3 [options]="HT_DiagramOptions2" [data]="HT_DiagramData" #HTDiagram ></nvd3>
+           <nvd3 [options]="GCC_DiagramOptions2" [data]="GCC_DiagramData" Id="GCCChart" #GCCChart></nvd3>
+           <nvd3 [options]="Grid_DiagramOptions2" [data]="Grid_DiagramData"></nvd3>
+        </div>       
+    </ng-template>
+  </ngb-tab>
+
+
+  <!-- <ngb-tab *ngIf="(HotUtilities.count !== 0) || (ColdUtilities.count !== 0)">
+    <ng-template ngbTabTitle><b>Optimize Approach Temp </b></ng-template>
+    <ng-template ngbTabContent>
+      <app-optimize-t></app-optimize-t>
+    </ng-template>
+  </ngb-tab> -->
+</ngb-tabset>
+
+
+
+
+
+
+
+
+
+

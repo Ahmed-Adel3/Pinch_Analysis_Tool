@@ -1,0 +1,15 @@
+C:\Users\GapTech\Documents\pinch_analysis\Pinch Analysis\TestApp\bin\Release\TestApp.exe.config
+C:\Users\GapTech\Documents\pinch_analysis\Pinch Analysis\TestApp\bin\Release\TestApp.exe
+C:\Users\GapTech\Documents\pinch_analysis\Pinch Analysis\TestApp\bin\Release\TestApp.pdb
+C:\Users\GapTech\Documents\pinch_analysis\Pinch Analysis\TestApp\bin\Release\TestApp.exe.CodeAnalysisLog.xml
+C:\Users\GapTech\Documents\pinch_analysis\Pinch Analysis\TestApp\bin\Release\TestApp.exe.lastcodeanalysissucceeded
+C:\Users\GapTech\Documents\pinch_analysis\Pinch Analysis\TestApp\bin\Release\PinchAnalysis_DLL.dll
+C:\Users\GapTech\Documents\pinch_analysis\Pinch Analysis\TestApp\bin\Release\PinchAnalysis_DLL.pdb
+C:\Users\GapTech\Documents\pinch_analysis\Pinch Analysis\TestApp\obj\Release\TestApp.csprojResolveAssemblyReference.cache
+C:\Users\GapTech\Documents\pinch_analysis\Pinch Analysis\TestApp\obj\Release\TestApp.Form1.resources
+C:\Users\GapTech\Documents\pinch_analysis\Pinch Analysis\TestApp\obj\Release\TestApp.Properties.Resources.resources
+C:\Users\GapTech\Documents\pinch_analysis\Pinch Analysis\TestApp\obj\Release\TestApp.csproj.GenerateResource.cache
+C:\Users\GapTech\Documents\pinch_analysis\Pinch Analysis\TestApp\obj\Release\TestApp.csproj.CoreCompileInputs.cache
+C:\Users\GapTech\Documents\pinch_analysis\Pinch Analysis\TestApp\obj\Release\TestApp.csproj.CopyComplete
+C:\Users\GapTech\Documents\pinch_analysis\Pinch Analysis\TestApp\obj\Release\TestApp.exe
+C:\Users\GapTech\Documents\pinch_analysis\Pinch Analysis\TestApp\obj\Release\TestApp.pdb

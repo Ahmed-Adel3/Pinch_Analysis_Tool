@@ -1,0 +1,198 @@
+<div class="m-grid__item m-grid__item--fluid m-grid m-grid--ver-desktop m-grid--desktop m-grid--tablet-and-mobile m-grid--hor-tablet-and-mobile m-login m-login--1 m-login--signin" id="m_login">
+	<div class="m-grid__item m-grid__item--order-tablet-and-mobile-2 m-login__aside">
+		<div class="m-stack m-stack--hor m-stack--desktop">
+			<div class="m-stack__item m-stack__item--fluid">
+				<div class="m-login__wrapper">
+					<div class="m-login__logo">
+						<a href="#">
+							<img src="./assets/app/media/img//logos/logo-1.png">
+						</a>
+					</div>
+					<div class="m-login__signin">
+						<div class="m-login__head">
+							<h3 class="m-login__title">
+								Sign In
+							</h3>
+
+							<!-- <div class="m--margin-top-40 m-alert m-alert--outline m-alert--outline-2x alert alert-success fade show" role="alert">
+								Use username
+								<span style="font-weight: 500;">
+									demo@demo.com
+								</span>
+								and password
+								<span style="font-weight: 500;">
+									demo
+								</span>
+								to continue or singup.
+							</div> -->
+						</div>
+						<form (ngSubmit)="f.form.valid && signin()" #f="ngForm" class="m-login__form m-form" action="">
+							<ng-template #alertSignin></ng-template>
+							<div class="form-group ">
+								<input class="form-control m-input m-input--pill" type="text" placeholder="User Name or E-mail" name="email" [(ngModel)]="model.email" #email="ngModel" autocomplete="off">
+							</div>
+							<div class="form-group ">
+								<input class="form-control m-input m-login__form-input--last m-input--pill" type="password" placeholder="Password" name="password" [(ngModel)]="model.password" #password="ngModel">
+							</div>
+							<div class="row m-login__form-sub">
+								<div class="col m--align-left">
+									<label class="m-checkbox m-checkbox--brand">
+										<input type="checkbox" name="remember" [(ngModel)]="model.remember" #remember="ngModel">
+										Remember me
+										<span></span>
+									</label>
+								</div>
+
+								<!-- Forget Password Commented-->
+							<div class="col m--align-right">
+									<a href="javascript:;" id="m_login_forget_password" class="m-link">
+										Forget Password ?
+									</a>
+							</div> 
+							</div>
+							<div class="form-group ">
+							<div class="m-login__form-action">
+								<button [disabled]="loading" [ngClass]="{'m-loader m-loader--right m-loader--light': loading}" id="m_login_signin_submit" class="btn btn-brand m-btn m-btn--icon m-btn--pill">
+									Sign In
+								</button>
+							</div>
+							</div>
+						</form>
+					</div>
+					<div class="m-login__signup">
+						<div class="m-login__head">
+							<h3 class="m-login__title">
+								Sign Up
+							</h3>
+							<div class="m-login__desc">
+							<a class="btn m-btn m-btn--gradient-from-info m-btn--gradient-to-accent"
+							href="https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=86jt7wyx5a3sm0&redirect_uri=http://pinchapi.gaptech.co/api/Account/SaveLinkedinUser&state=987654321&scope=r_emailaddress%20r_basicprofile" >
+							<i class="fa fa-linkedin"></i></a><span> &nbsp;&nbsp; Sign up with Linkedin</span>
+							<br/><br/><b>OR</b></div>
+							
+							<div class="m-login__desc">
+								Enter your details to create your account:
+							</div>
+						</div>
+						<form (ngSubmit)="f.form.valid && signup()" #f="ngForm" class="m-login__form m-form" action="">
+							<ng-template #alertSignup></ng-template>
+							<div class="form-group">
+								<input class="form-control m-input m-input--pill" type="text" placeholder="User Name" name="userName" [(ngModel)]="model.userName" #userName="ngModel">
+							</div>
+							<div class="form-group">
+								<input class="form-control m-input m-input--pill" type="text" placeholder="Email" name="email" [(ngModel)]="model.email" #email="ngModel" autocomplete="off">
+							</div>
+							<div class="form-group">
+								<div class="m-input-icon m-input-icon--right">
+										<input class="form-control m-input m-input--pill" type="password" placeholder="Password" name="password" [(ngModel)]="model.password" #password="ngModel">
+										<span class="m-input-icon__icon m-input-icon__icon--right" >
+											<span data-toggle="m-popover" title data-placement="right" data-content="At least: •  6 characters • 1 capital and 1 small letter • 1 number • 1 special character" data-original-title="Password Constrains" ><i class="la la-unlock-alt"></i></span>
+										</span>
+									</div>
+							</div>
+							<div class="form-group">
+								<input class="form-control m-input m-input--pill " type="password" placeholder="Confirm Password" name="rpassword" [(ngModel)]="model.rpassword" #rpassword="ngModel">
+							</div>
+							<div class="form-group">
+								<input class="form-control m-input m-input--pill" type="text" placeholder="First Name" name="firstName" [(ngModel)]="model.firstName" #firstName="ngModel">
+							</div>
+							<div class="form-group">
+								<input class="form-control m-input m-input--pill" type="text" placeholder="Last Name" name="lastName" [(ngModel)]="model.lastName" #lastName="ngModel">
+							</div>
+							<!-- <div class="form-group m-form__group">
+								<input class="form-control m-input" type="text" placeholder="Country" name="country" [(ngModel)]="model.country" #fullname="ngModel">
+							</div> -->
+							<div class="form-group">
+							    <select class="form-control m-input m-input--pill form-control-lg"[(ngModel)]="model.country" name="country"  >
+									<option value="" disabled [selected] >Select your country</option>
+									<option *ngFor="let option of Countries" [value]="option.name" >
+							    		 {{ option.name }}
+							    	</option>
+							    </select>
+							</div>
+							<div class="form-group">
+								<input class="form-control m-input m-input--pill" type="text" placeholder="Company" name="company" [(ngModel)]="model.company" #company="ngModel">
+							</div>
+							<div class="form-group m-login__form-input--last">
+								<input class="form-control m-input m-input--pill" type="text" placeholder="Position" name="position" [(ngModel)]="model.position" #position="ngModel">
+							</div>
+							<!-- <div class="row form-group m-form__group m-login__form-sub">
+								<div class="col m--align-left">
+									<label class="m-checkbox m-checkbox--brand">
+										<input type="checkbox" name="agree" [(ngModel)]="model.agree" #agree="ngModel">
+										I Agree the
+										<a href="#" class="m-link m-link--brand">
+											terms and conditions
+										</a>
+										.
+										<span></span>
+									</label>
+									<span class="m-form__help"></span>
+								</div>
+							</div> -->
+
+							<div class="m-login__form-action">
+								<button [disabled]="loading" [ngClass]="{'m-loader m-loader--right m-loader--light': loading}" id="m_login_signup_submit" class="btn btn-brand m-btn m-btn--pill m-btn--custom m-btn--air">
+									Sign Up
+								</button>
+								<button [disabled]="loading"  id="m_login_signup_cancel" class="btn btn-outline-brand  m-btn m-btn--pill m-btn--custom">
+									Cancel
+								</button>
+
+							</div>
+						</form>
+					</div>
+					<div class="m-login__forget-password">
+						<div class="m-login__head">
+							<h3 class="m-login__title">
+								Forgotten Password ?
+							</h3>
+							<div class="m-login__desc">
+								Enter your email to reset your password:
+							</div>
+						</div>
+						<form (ngSubmit)="f.form.valid && forgotPass()" #f="ngForm" class="m-login__form m-form" action="">
+							<ng-template #alertForgotPass></ng-template>
+							<div class="form-group m-form__group">
+								<input class="form-control m-input" type="text" placeholder="Email" name="email" [(ngModel)]="model.email" #email="ngModel" id="m_email" autocomplete="off">
+							</div>
+							<div class="m-login__form-action">
+								<button [disabled]="loading" [ngClass]="{'m-loader m-loader--right m-loader--light': loading}" id="m_login_forget_password_submit" class="btn btn-brand m-btn m-btn--pill m-btn--custom m-btn--air">
+									Request
+								</button>
+								<button [disabled]="loading"  id="m_login_forget_password_cancel" class="btn btn-outline-brand m-btn m-btn--pill m-btn--custom">
+									Cancel
+								</button>
+							</div>
+						</form>
+					</div>
+				</div>
+
+				<div class="m-login__account">
+						<span class="m-login__account-msg">
+							Don't have an account yet ?
+						</span>
+						&nbsp;&nbsp;
+						<a href="javascript:;" id="m_login_signup" class="m-link m-link--brand m-login__account-link">
+							Sign Up
+						</a>
+				</div>
+			</div>
+			<div class="m-stack__item m-stack__item--center">
+				
+			</div>
+		</div>
+	</div>
+	<div class="m-grid__item m-grid__item--fluid m-grid m-grid--center m-grid--hor m-grid__item--order-tablet-and-mobile-1	m-login__content" style="background-image: url(./assets/app/media/img//bg/bg-8.jpg)">
+		<div class="m-grid__item m-grid__item--middle">
+			<h3 class="m-login__welcome">
+				ENPIRE Pinch Tool
+			</h3>
+			<p class="m-login__msg">
+				GAPTECH ENERGY
+				<br>
+				
+			</p>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,407 @@
+
+<mat-horizontal-stepper [linear]=true #stepper="matHorizontalStepper" (selectionChange)="onStepChange()"  >
+
+    <mat-step [stepControl]="BasicInfoForm">
+        <form [formGroup]="BasicInfoForm">
+            <ng-template matStepLabel>BASIC INFO</ng-template>
+            <table class="table text-center">
+                <tbody>
+                    <tr class="table-info">
+                        <td colspan="6">
+                            <p>Case Name: </p>
+                        </td>
+                        <td colspan="2"></td>
+                        <td colspan="2">
+                            <input type="text" class="form-control" placeholder="Case Name" formControlName="CaseName" (blur)="onBlur(-1,'caseName',false)" (focus)="onFocus(-1,'caseName')">
+                            <div *ngIf="BasicInfoForm.controls.CaseName.hasError('required')&&BasicInfoForm.controls.CaseName.touched " class="alert alert-danger">
+                                Case Name is Required
+                            </div>
+                        </td>
+                        <td colspan="2"></td>
+                    </tr>
+                    <tr class="table-info">
+                        <td colspan="6">
+                            <p>Description: </p>
+                        </td>
+                        <td colspan="2"></td>
+                        <td colspan="2">
+                            <textarea type="text" class="form-control" placeholder="Description" formControlName="CaseDescription" (blur)="onBlur(-1,'caseDescription',false)" (focus)="onFocus(-1,'caseDescription')"></textarea>
+                        </td>
+                        <td colspan="2"></td>
+                    </tr>
+                    <tr class="table-info">
+                        <td colspan="6">
+                            <p data-toggle="m-popover" title data-placement="top" data-content="• Required • Higher than 0" data-original-title="Approach Temperature Constrains">Approach Temperature: </p>
+                        </td>
+                        <td colspan="2"></td>
+                        <td colspan="2">
+                            <input type="number" class="form-control" placeholder="Approach Temperature" formControlName="Approach" (blur)="onBlur(-1,'approach',false)" (focus)="onFocus(-1,'approach')">
+                            <div *ngIf="BasicInfoForm.controls.Approach.hasError('required')&&BasicInfoForm.controls.Approach.touched " class="alert alert-danger">
+                                Approach Temperature is required
+                            </div>
+                            <div *ngIf="BasicInfoForm.controls.Approach.errors?.min&&BasicInfoForm.controls.Approach.touched " class="alert alert-danger">
+                                Approach Temperature should be higher than 0
+                            </div>
+                        </td>
+                        <td colspan="2"></td>
+                    </tr>
+                    <tr class="table-info">
+                        <td colspan="6">Please select Unit System</td>
+                        <td colspan="6">
+                            <select formControlName="Units" class="btn btn-brand">
+                                <option *ngFor="let option of Units" [value]="option.value">
+                                    {{ option.label }}
+                                </option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr class="table-info">
+                        <td colspan="6">Would you like to Enter Utilities? </td>
+                        <td colspan="6">
+                            <select formControlName="UtilitiesStage" class="btn btn-brand">
+                                    <option *ngFor='let option of UtilititesStageSelect' [value]='option.value' >{{option.label}}</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="12">
+                                <button matStepperNext type="button" class="btn btn-primary btn" [disabled]="!BasicInfoForm.valid">Next</button>
+                                <input type="button" value="Empty Form" class="btn btn-danger"
+                                [swal]="{ showCancelButton:true, title:'Empty Form', text:'Are you sure?' }"
+                                 (confirm)="clearData('BasicInfo')" />
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+    </mat-step>
+  
+    <mat-step [stepControl]="UtilitiesForm" optional *ngIf="BasicInfoForm.get('UtilitiesStage').value === 'Yes' ">
+        <form [formGroup]="UtilitiesForm">
+            <ng-template matStepLabel>Enter Utilities</ng-template>
+            <table class="table text-center">
+                <tbody>
+                    <tr>
+                        <td colspan="6">
+                            <p>
+                                <input type="button" value="Add Hot Utility" (click)="addUtility('hot')" class="btn btn-success" />
+                            </p>
+                            <table class="table m-table m-table--head-bg-brand">
+                                <thead>
+                                    <tr>
+                                        <th data-toggle="m-popover" data-placement="top" data-content="Hot Utility Number">#</th>
+                                        <th>Utility Name</th>
+                                        <th data-toggle="m-popover" title data-placement="top" data-content="• Required • Between -273 and 10000 • Higher than Hot Target" data-original-title="Hot Supply Constrains">Supply Temperature</th>
+                                        <th data-toggle="m-popover" title data-placement="top" data-content="• Required • Between -273 and 10000 • Lower than Hot Supply" data-original-title="Hot Target Constrains">Target Temperature</th>
+                                        <th data-toggle="m-popover" title data-placement="top" data-content="• Required • Between -273 and 10000 " data-original-title="Utility Approach Constrains" > Utility Approach Temperature</th>
+
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody formArrayName="HotUtilities" *ngFor="let stream of UtilitiesForm.get('HotUtilities')['controls']; let i = index">
+                                    <tr [formGroupName]="i">
+                                        <td>{{i+1}}</td>
+                                        <td>
+                                            <input type="text" formControlName="Name" class="form-control" placeholder="Name {{i+1}}" (blur)="onBlur(i,'hotUtility',true)" (focus)="onFocus(i,'hotUtility')">
+                                        </td>
+                                        <td>
+                                            <input type="number" formControlName="Supply" class="form-control" placeholder="Hot Utility{{i+1}}" (blur)="onBlur(i,'hotUtility',false)" (focus)="onFocus(i,'hotUtility')">
+                                        </td>
+                                        <td>
+                                            <input type="number" formControlName="Target" class="form-control" placeholder="Hot Utility{{i+1}}" (blur)="onBlur(i,'hotUtility',false)" (focus)="onFocus(i,'hotUtility')">
+                                        </td>
+                                        <td>
+                                            <input type="number" formControlName="UtilityApproach" class="form-control" placeholder="Hot Utility{{i+1}}" (blur)="onBlur(i,'hotUtility',false)" (focus)="onFocus(i,'hotUtility')">
+                                        </td>
+                                        <td>
+                                            <i class="fa fa-trash-o " style="font-size:25px;color:#f66e84" (click)="removeUtility(i,'hot')"  tabindex="i+2010"></i>
+                                        </td>
+                                    </tr>
+                                    <tr [formGroupName]="i" [ngClass]="{'d-none': UtilitiesForm.get(['HotUtilities']).valid || !UtilitiesForm.get(['HotUtilities']).touched }">
+                                        <td colspan="5">
+                                            <ul>
+                                                <li class="list-inline-item alert alert-danger" *ngIf="UtilitiesForm.get(['HotUtilities',i,'Name']).hasError('required')
+                                 && UtilitiesForm.get(['HotUtilities',i,'Name']).touched ">Name is Required </li>
+                                                <li class="list-inline-item alert alert-danger" *ngIf="UtilitiesForm.get(['HotUtilities',i,'Name']).hasError('Duplicate')
+                                 && UtilitiesForm.get(['HotUtilities',i,'Name']).touched ">Utility Name must be Unique </li>
+                                                <li class="list-inline-item alert alert-danger" *ngIf="UtilitiesForm.get(['HotUtilities',i,'Supply']).hasError('required')
+                                 && UtilitiesForm.get(['HotUtilities',i,'Supply']).touched ">Supply Temperature is Required </li>
+                                                <li class="list-inline-item alert alert-danger" *ngIf="(  UtilitiesForm.get(['HotUtilities',i,'Supply']).errors?.min || UtilitiesForm.get(['HotUtilities',i,'Supply']).errors?.max)
+                                 && UtilitiesForm.get(['HotUtilities',i,'Supply']).touched ">Supply Temperature should be between -273 and 10000</li>
+                                                <li class="list-inline-item alert alert-danger" *ngIf="UtilitiesForm.get(['HotUtilities',i,'Target']).hasError('required')
+                                 && UtilitiesForm.get(['HotUtilities',i,'Target']).touched ">Target Temperature is Required </li>
+                                                <li class="list-inline-item alert alert-danger" *ngIf="(  UtilitiesForm.get(['HotUtilities',i,'Target']).errors?.min || UtilitiesForm.get(['HotUtilities',i,'Target']).errors?.max)
+                                 && UtilitiesForm.get(['HotUtilities',i,'Target']).touched ">Target Temperature should be between -273 and 10000</li>
+                                                <li class="list-inline-item alert alert-danger" *ngIf="UtilitiesForm.get(['HotUtilities',i,'UtilityApproach']).hasError('required')
+                                 && UtilitiesForm.get(['HotUtilities',i,'UtilityApproach']).touched ">Utility Approach Temperature is Required </li>
+                                                <li class="list-inline-item alert alert-danger" *ngIf="( UtilitiesForm.get(['HotUtilities',i,'UtilityApproach']).errors?.min || UtilitiesForm.get(['HotUtilities',i,'UtilityApproach']).errors?.max)
+                                 && UtilitiesForm.get(['HotUtilities',i,'UtilityApproach']).touched ">Utility Approach Temperature should be between 1 and 100 </li>
+                                                <li class="list-inline-item alert alert-danger" *ngIf="UtilitiesForm.get(['HotUtilities',i,'Target']).hasError('largerValue')">Target should be Lower than Supply with at least 1 degree</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                        <td colspan="6">
+                            <p>
+                                <input type="button" value="Add Cold Utility" (click)="addUtility('cold')" class="btn btn-success" />
+                            </p>
+                            <table class="table" class="table m-table m-table--head-bg-brand">
+                                <thead>
+                                    <tr>
+                                        <th data-toggle="m-popover" data-placement="top" data-content="Cold Utility Number">#</th>
+                                        <th>Utility Name</th>
+                                        <th data-toggle="m-popover" title data-placement="top" data-content="• Required • Between -273 and 10000 • Lower than Cold Target" data-original-title="Cold Supply Constrains">Supply Temperature</th>
+                                        <th data-toggle="m-popover" title data-placement="top" data-content="• Required • Between -273 and 10000 • Higher than Cold Supply" data-original-title="Cold Target Constrains">Target Temperature</th>
+                                         <th data-toggle="m-popover" title data-placement="top" data-content="• Required • Between -273 and 10000 " data-original-title="Utility Approach Constrains">Utility Approach Temperature</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody formArrayName="ColdUtilities" *ngFor="let stream of UtilitiesForm.get('ColdUtilities')['controls']; let i = index">
+                                    <tr [formGroupName]="i">
+                                        <td>{{i+1}}</td>
+                                        <td>
+                                            <input type="text" formControlName="Name" class="form-control" placeholder="Name {{i+1}}" (blur)="onBlur(i,'coldUtility',true)" (focus)="onFocus(i,'coldUtility')">
+                                        </td>
+                                        <td>
+                                            <input type="number" formControlName="Supply" class="form-control" placeholder="Cold Utility{{i+1}}" (blur)="onBlur(i,'coldUtility',false)" (focus)="onFocus(i,'coldUtility')">
+                                        </td>
+                                        <td>
+                                            <input type="number" formControlName="Target" class="form-control" placeholder="Cold Utility{{i+1}}" (blur)="onBlur(i,'coldUtility',false)" (focus)="onFocus(i,'coldUtility')">
+                                        </td>
+                                        <td>
+                                            <input type="number" formControlName="UtilityApproach" class="form-control" placeholder="Cold Utility{{i+1}}" (blur)="onBlur(i,'coldUtility',false)" (focus)="onFocus(i,'coldUtility')">
+                                        </td>
+                                        <td>
+                                            <i class="fa fa-trash-o " style="font-size:25px;color:#f66e84" (click)="removeUtility(i,'cold')"  tabindex="i+1000"></i>
+                                        </td>
+                                    </tr>
+                                    <tr [formGroupName]="i" [ngClass]="{'d-none': UtilitiesForm.get(['ColdUtilities']).valid || !UtilitiesForm.get(['ColdUtilities']).touched }">
+                                        <td colspan="5">
+                                            <ul>
+                                                <li class="list-inline-item alert alert-danger" *ngIf="UtilitiesForm.get(['ColdUtilities',i,'Name']).hasError('required')
+                                 && UtilitiesForm.get(['ColdUtilities',i,'Name']).touched ">Name is Required </li>
+                                                <li class="list-inline-item alert alert-danger" *ngIf="UtilitiesForm.get(['ColdUtilities',i,'Name']).hasError('Duplicate')
+                                 && UtilitiesForm.get(['ColdUtilities',i,'Name']).touched ">Utility Name must be Unique </li>
+                                                <li class="list-inline-item alert alert-danger" *ngIf="UtilitiesForm.get(['ColdUtilities',i,'Supply']).hasError('required')
+                                 && UtilitiesForm.get(['ColdUtilities',i,'Supply']).touched ">Supply Temperature is Required </li>
+                                                <li class="list-inline-item alert alert-danger" *ngIf="(  UtilitiesForm.get(['ColdUtilities',i,'Supply']).errors?.min || UtilitiesForm.get(['ColdUtilities',i,'Supply']).errors?.max)
+                                 && UtilitiesForm.get(['ColdUtilities',i,'Supply']).touched ">Supply Temperature should be between -273 and 10000</li>
+                                                <li class="list-inline-item alert alert-danger" *ngIf="UtilitiesForm.get(['ColdUtilities',i,'Target']).hasError('required')
+                                 && UtilitiesForm.get(['ColdUtilities',i,'Target']).touched ">Target Temperature is Required </li>
+                                                <li class="list-inline-item alert alert-danger" *ngIf="(  UtilitiesForm.get(['ColdUtilities',i,'Target']).errors?.min || UtilitiesForm.get(['ColdUtilities',i,'Target']).errors?.max)
+                                 && UtilitiesForm.get(['ColdUtilities',i,'Target']).touched ">Target Temperature should be between -273 and 10000</li>
+                                                <li class="list-inline-item alert alert-danger" *ngIf="UtilitiesForm.get(['ColdUtilities',i,'UtilityApproach']).hasError('required')
+                                 && UtilitiesForm.get(['ColdUtilities',i,'UtilityApproach']).touched ">Utility Approach Temperature is Required </li>
+                                                <li class="list-inline-item alert alert-danger" *ngIf="(UtilitiesForm.get(['ColdUtilities',i,'UtilityApproach']).errors?.min || UtilitiesForm.get(['ColdUtilities',i,'UtilityApproach']).errors?.max )
+                                 && UtilitiesForm.get(['ColdUtilities',i,'UtilityApproach']).touched ">Utility Approach Temperature should be between 1 and 100 </li>
+                                                <li class="list-inline-item alert alert-danger" *ngIf="UtilitiesForm.get(['ColdUtilities',i,'Supply']).hasError('largerValue')">Target should be higher than Supply with at least 1 degree</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="12">
+                                <button matStepperPrevious class="btn btn-primary btn" >Back</button>    
+                                <button matStepperNext type="button" class="btn btn-primary">Next</button>
+                            <input type="button" value="Empty Form" class="btn btn-danger"
+                            [swal]="{ showCancelButton:true, title:'Empty Form', text:'Are you sure?' }"
+                             (confirm)="clearData('Utilities')" />
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+    </mat-step>
+  
+    <mat-step [stepControl]="FormG2">
+        <form [formGroup]="FormG2">
+            <ng-template matStepLabel>Enter Exchangers</ng-template>
+            <table class="table m-table  m-table--head-bg-brand" >
+              <thead>
+                  <tr>
+                      <td colspan="12">
+                      <input type="button" value="Add Heat Exchanger" (click)="addExchanger()" class="btn btn-success" />
+                    </td>
+                  </tr>
+                  <tr>
+                      <th rowspan="2" data-toggle="m-popover" data-placement="top" data-content="Utility Number"> #</th>
+                      <th rowspan="2" data-toggle="m-popover" data-placement="top" data-content="Can be either H.E, cold utility, hot utility">Heat Exchanger</th>
+                      <th rowspan="2"> Name </th> 
+                      <th colspan="2" data-toggle="m-popover" data-placement="top" data-content="Hot Side of the Utility"> Hot Side</th> 
+                      <th colspan="2" data-toggle="m-popover" data-placement="top" data-content="Cold Side of the Utility"> Cold Side</th>
+                      <th rowspan="2" data-toggle="m-popover" title data-placement="top" data-content="• Required • Between 0 and 9999"  data-original-title="Duty Constrains">
+                         Duty
+                      </th>
+                      <th rowspan="2" data-toggle="m-popover" title data-placement="top" data-content="• Required • Between 0 and 9999"  data-original-title="Duty Constrains">
+                        Utility Matching
+                     </th>
+                      <th rowspan="2"></th>
+                   </tr>
+                   <tr>
+                       <th data-toggle="m-popover" title data-placement="top" data-content="• Required • Between -273 and 10000 • Higher than Hot Target"  data-original-title="Hot Supply Constrains"> Supply Temperature</th> 
+                       <th data-toggle="m-popover" title data-placement="top" data-content="• Required • Between -273 and 10000 • Lower than Hot Supply"  data-original-title="Hot Target Constrains"> Target Temperature</th> 
+                       <th data-toggle="m-popover" title data-placement="top" data-content="• Required • Between -273 and 10000 • Lower than Cold Target"  data-original-title="Cold Supply Constrains"> Supply Temperature</th>
+                       <th data-toggle="m-popover" title data-placement="top" data-content="• Required • Between -273 and 10000 • Higher than Cold Supply"  data-original-title="Cold Target Constrains"> Target Temperature</th>
+                    </tr>
+                  
+              </thead>  
+          
+              <tbody formArrayName="Exchangers" *ngFor="let stream of FormG2.get('Exchangers')['controls']; let i = index">
+                    <tr [formGroupName]="i">
+                                  <td>{{i+1}}</td>
+                                  <td> 
+                                      <select formControlName="Type" class="form-control" (change)="disableInput(FormG2.get(['Exchangers',i,'Type']).value,i)" (blur)="onBlur(i,exchanger,false)" (focus)="onFocus(i,exchanger)">
+                                      <option *ngFor="let option of utilityTypeOptions" [value]="option.value" >
+                                        {{ option.label }}
+                                      </option>
+                                    </select>
+                                   <!-- <select formControlName="UtilityProcessType" *ngIf="FormG2.get(['Exchangers',i,'Type']).value === '1'" (change)="disableInput(FormG2.get(['Exchangers',i,'UtilityProcessType']).value,i)"  class="form-control" required>
+                                        <option *ngFor="let option of utilityProcessTypeOptions" [value]="option.value" >
+                                            {{ option.label }}
+                                          </option>
+                                      </select> -->
+                                    </td>
+                                  <td><input type="text" formControlName="Name" class="form-control" placeholder="Name {{i+1}}" (blur)="onBlur(i,exchanger,true)" (focus)="onFocus(i,exchanger)"></td>
+                                  <td colspan="2"  >
+                                      <div class="row" formGroupName="hotGroup">
+                                           <input type="number" formControlName="hotSupply"   class="form-control half"   placeholder="Hot Supply {{i+1}}"  (blur)="onBlur(i,exchanger,false)" (focus)="onFocus(i,exchanger)">
+                                           <input type="number" formControlName="hotTarget"   class="form-control half"   placeholder="Hot Target {{i+1}}"  (blur)="onBlur(i,exchanger,false)" (focus)="onFocus(i,exchanger)">
+                                      </div>
+                                  </td>
+                                   <td colspan="2"  >
+                                      <div class="row" formGroupName="coldGroup">
+                                          <input type="number" formControlName="coldSupply"    class="form-control half"   placeholder="Cold Supply {{i+1}}" (blur)="onBlur(i,exchanger,false)" (focus)="onFocus(i,exchanger)">
+                                          <input type="number" formControlName="coldTarget"    class="form-control half"   placeholder="Cold Target {{i+1}}" (blur)="onBlur(i,exchanger,false)" (focus)="onFocus(i,exchanger)">
+                                      </div>
+                                  </td>
+                                  
+                                  <td><input type="number" formControlName="Duty"   class="form-control"   placeholder="{{i+1}}" (blur)="onBlur(i,exchanger,false)" (focus)="onFocus(i,exchanger)"></td>
+                                  <td >
+                            <select *ngIf="FormG2.get(['Exchangers',i,'Type']).value.toString() === '1' && BasicInfoForm.get('UtilitiesStage').value === 'Yes' " formControlName="UtilityMatch" class="form-control btn-secondary btn" >
+                                    <option *ngFor="let utility of UtilitiesForm.get(['HotUtilities']).value; let i = index " [value]="utility.Name" >
+                                         {{ utility.Name}}
+                                    </option>
+                            </select>
+                            <select *ngIf="FormG2.get(['Exchangers',i,'Type']).value.toString() === '2' && BasicInfoForm.get('UtilitiesStage').value === 'Yes'" formControlName="UtilityMatch" class="form-control btn-secondary btn" >
+                                  <option *ngFor="let utility of UtilitiesForm.get(['ColdUtilities']).value ; let i = index " [value]="utility.Name" >
+                                       {{ utility.Name }}
+                                  </option>
+                            </select>
+                                </td>
+                                  <td>
+                                      <i (click)="removeExchanger(i)" 
+                                      [ngClass]="{'d-none':FormG2.get('Exchangers').controls.length===2}" 
+                                      class="fa fa-trash-o " style="font-size:25px;color:#f66e84"
+                                      tabindex="i+1000"
+                                      ></i></td>
+                    </tr>
+                    <tr [formGroupName]="i" [ngClass]="{'d-none': FormG2.get(['Exchangers',i]).valid || !FormG2.get(['Exchangers',i]).touched }">
+                        <td colspan="9">
+                            <ul>
+                                <li class="list-inline-item alert alert-danger"  *ngIf="FormG2.get(['Exchangers',i,'Type']).hasError('required')
+                                                                                     && FormG2.get(['Exchangers',i,'Type']).touched ">Equipment Type is Required </li>
+          
+                                <li class="list-inline-item alert alert-danger "  *ngIf="FormG2.get(['Exchangers',i,'Name']).hasError('required')
+                                                                                      && FormG2.get(['Exchangers',i,'Name']).touched ">Name is Required </li>
+          
+                                <li class="list-inline-item alert alert-danger"  *ngIf="FormG2.get(['Exchangers',i,'hotGroup','hotSupply']).hasError('required')
+                                                                                     && FormG2.get(['Exchangers',i,'hotGroup','hotSupply']).touched ">Hot Supply is Required </li>
+          
+                                <li class="list-inline-item alert alert-danger"  *ngIf=" (FormG2.get(['Exchangers',i,'hotGroup','hotSupply']).errors?.min  || FormG2.get(['Exchangers',i,'hotGroup','hotSupply']).errors?.max ) 
+                                                                                        && FormG2.get(['Exchangers',i,'hotGroup','hotSupply']).touched ">Hot Supply should be between -273 and 10000 </li>
+          
+                                <li class="list-inline-item alert alert-danger"  *ngIf="FormG2.get(['Exchangers',i,'hotGroup','hotTarget']).hasError('required')
+                                                                                     && FormG2.get(['Exchangers',i,'hotGroup','hotTarget']).touched ">Hot Target is Required </li>
+          
+                                <li class="list-inline-item alert alert-danger"  *ngIf=" ( FormG2.get(['Exchangers',i,'hotGroup','hotTarget']).errors?.min  || FormG2.get(['Exchangers',i,'hotGroup','hotTarget']).errors?.max ) 
+                                                                                     && FormG2.get(['Exchangers',i,'hotGroup','hotTarget']).touched "> Hot Target should be between -273 and 10000 </li>
+          
+                                <li class="list-inline-item alert alert-danger"  *ngIf="FormG2.get(['Exchangers',i,'hotGroup','hotTarget']).hasError('largerValue')">
+                                   Hot Target should be lower than Hot Supply with at least 1 degree </li>
+          
+                                <li class="list-inline-item alert alert-danger"  *ngIf="FormG2.get(['Exchangers',i,'coldGroup','coldSupply']).hasError('required')
+                                                                                     && FormG2.get(['Exchangers',i,'coldGroup','coldSupply']).touched ">Cold Supply is Required </li>
+          
+                                <li class="list-inline-item alert alert-danger"  *ngIf=" (FormG2.get(['Exchangers',i,'coldGroup','coldSupply']).errors?.min  || FormG2.get(['Exchangers',i,'coldGroup','coldSupply']).errors?.max ) 
+                                                                                     && FormG2.get(['Exchangers',i,'coldGroup','coldSupply']).touched ">Cold Supply should be between -273 and 10000 </li>
+          
+                                <li class="list-inline-item alert alert-danger"  *ngIf="FormG2.get(['Exchangers',i,'coldGroup','coldTarget']).hasError('required')
+                                                                                     && FormG2.get(['Exchangers',i,'coldGroup','coldTarget']).touched ">Cold Target is Required </li> 
+          
+                                <li class="list-inline-item alert alert-danger"  *ngIf=" (FormG2.get(['Exchangers',i,'coldGroup','coldTarget']).errors?.min ||FormG2.get(['Exchangers',i,'coldGroup','coldTarget']).errors?.max ) 
+                                                                                     && FormG2.get(['Exchangers',i,'coldGroup','coldTarget']).touched"> Cold Target should be between -273 and 10000 </li>
+                                         
+                                <li class="list-inline-item alert alert-danger"  *ngIf="FormG2.get(['Exchangers',i,'coldGroup','coldSupply']).hasError('largerValue')">
+                                    Cold Target should be higher than Cold Supply with at least 1 degree  </li>
+          
+                                <li class="list-inline-item alert alert-danger"  *ngIf="FormG2.get(['Exchangers',i,'Duty']).hasError('required')
+                                                                                     && FormG2.get(['Exchangers',i,'Duty']).touched ">Duty is Required </li>  
+                                <li class="list-inline-item alert alert-danger"  *ngIf="(FormG2.get(['Exchangers',i,'Duty']).errors?.min || FormG2.get(['Exchangers',i,'Duty']).errors?.max)
+                                                                                     && FormG2.get(['Exchangers',i,'Duty']).touched ">Duty should be between 0 and 9999</li>    
+                                <li class="list-inline-item alert alert-danger"  *ngIf="FormG2.get(['Exchangers',i,'UtilityMatch']).hasError('required')">Utility Matching is Required </li> 
+                                 </ul>
+                        </td>
+                      </tr> 
+              </tbody>
+              <tbody> 
+                    <tr>
+                        <td colspan="10" style="text-align: -webkit-center"> 
+                                <span *ngIf="UselessUtilities.length !== 0 && UselessUtilities !== undefined && BasicInfoForm.get('UtilitiesStage').value === 'Yes'" class="m-alert m-alert--icon alert alert-warning" role="alert">
+                                        <div class="m-alert__icon">
+                                            <i class="la la-warning"></i>
+                                        </div>
+                                        <div class="m-alert__text">
+                                              <strong>There are Utilities Entered and never been used:</strong> 
+                                              <p>{{UselessUtilities}}</p>	
+
+                                              <strong>Please attach them to Heat Exchangers</strong>
+                                        </div>	
+                                        <div class="m-alert__close">
+                                            <button type="button" class="close" data-close="alert" aria-label="Hide">
+                                            </button>	
+                                        </div>			  	
+                                </span>
+                                <button matStepperPrevious class="btn btn-primary btn">Back</button>
+                                <button matStepperNext  type="button" class="btn btn-primary btn" [disabled]="!FormG2.valid">Next</button>
+                                <input type="button" value="Empty Form" class="btn btn-danger"
+                                [swal]="{ showCancelButton:true, title:'Empty Form', text:'Are you sure?' }"
+                                 (confirm)="clearData('Exchangers')" />            
+                        </td>
+                    </tr> 
+                    <tr class="table-info">
+                          <td  colspan="10">Or: Fill Form from Excel Sheet <br/>
+                              <form [formGroup]="FormUpload" novalidate (ngSubmit)="SubmitUploadForm()">
+                                <input type="button" value="Download Excel Template" class="btn btn-primary" (click)="downloadExcelTemplate()" />
+                                <div>and Upload it after filling it with your data </div><br/>
+                                <input type="file"  (change)="onFileChange($event)" />
+                                <input type="submit" value="upload" class="btn btn-primary" />
+                              </form>
+                            </td>
+                    </tr>
+                </tbody>
+            </table>
+          </form>
+    </mat-step>
+  
+    <mat-step>
+      <ng-template matStepLabel>Submit Data</ng-template>
+      <ul>
+        <li class=" success alert-success" *ngIf="FormG2.valid && BasicInfoForm.valid && UtilitiesForm.valid"> Thank you! You have completed all the steps.</li>
+        <li class=" alert alert-danger" *ngIf="!BasicInfoForm.valid">Please Check Basic Info Form for Errors  </li>
+        <li class=" alert alert-danger" *ngIf="!UtilitiesForm.valid && BasicInfoForm.get('UtilitiesStage').value === 'Yes'">Please Check Utilities Form for Errors </li>
+        <li class=" alert alert-danger" *ngIf="!FormG2.valid">Please Check Exchangers Form for Errors </li>
+        <li class=" alert alert-warning" *ngIf="UselessUtilities.length !== 0 && UselessUtilities !== undefined && BasicInfoForm.get('UtilitiesStage').value === 'Yes'">Please Check Streams Form for Warning or Submit Anyway </li>
+    </ul>
+      <div>
+        <button type="button" class="btn m-btn--pill m-btn--air btn-primary btn-lg m-btn m-btn--custom" (click)='SendData()' [disabled]="!FormG2.valid || !BasicInfoForm.valid || (!UtilitiesForm.valid && BasicInfoForm.get('UtilitiesStage').value === 'Yes')">Submit Data and See Results</button>
+        <!-- <button mat-button matStepperPrevious>Back</button> -->
+        <!-- <button mat-button (click)="stepper.reset()">Reset</button> -->
+      </div>
+    </mat-step>
+  
+  </mat-horizontal-stepper>

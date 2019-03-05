@@ -1,0 +1,17 @@
+/*.table>tbody>tr>td,
+.table>tbody>tr>th {
+  border-top: none;
+}*/
+ .alert {
+  padding: 0.1rem 0.5rem;
+  margin-bottom: 0.3rem;
+
+}
+
+.ng-valid[required], .ng-valid {
+  border-left: 1px solid #34BFA3; 
+}
+
+.ng-invalid:not(form)  {
+  border-left: 1px solid #f66e84; 
+} 

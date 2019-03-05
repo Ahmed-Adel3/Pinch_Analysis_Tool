@@ -1,0 +1,68 @@
+C:\Users\GapTech\Documents\pinch_analysis\Pinch Analysis\PinchAnalysis_DLL\bin\Debug\PinchAnalysis_DLL.dll
+C:\Users\GapTech\Documents\pinch_analysis\Pinch Analysis\PinchAnalysis_DLL\bin\Debug\PinchAnalysis_DLL.pdb
+C:\Users\GapTech\Documents\pinch_analysis\Pinch Analysis\PinchAnalysis_DLL\obj\Debug\PinchAnalysis_DLL.csproj.CoreCompileInputs.cache
+C:\Users\GapTech\Documents\pinch_analysis\Pinch Analysis\PinchAnalysis_DLL\obj\Debug\PinchAnalysis_DLL.dll
+C:\Users\GapTech\Documents\pinch_analysis\Pinch Analysis\PinchAnalysis_DLL\obj\Debug\PinchAnalysis_DLL.pdb
+C:\Users\GapTech\Documents\pinch_analysis\Pinch Analysis\PinchAnalysis_DLL\obj\Debug\PinchAnalysis_DLL.csprojResolveAssemblyReference.cache
+C:\Users\GapTech\Documents\Repositories\New folder\Pinch Analysis\PinchAnalysis_DLL\bin\Debug\PinchAnalysis_DLL.dll
+C:\Users\GapTech\Documents\Repositories\New folder\Pinch Analysis\PinchAnalysis_DLL\bin\Debug\PinchAnalysis_DLL.pdb
+C:\Users\GapTech\Documents\Repositories\New folder\Pinch Analysis\PinchAnalysis_DLL\obj\Debug\PinchAnalysis_DLL.csprojResolveAssemblyReference.cache
+C:\Users\GapTech\Documents\Repositories\New folder\Pinch Analysis\PinchAnalysis_DLL\obj\Debug\PinchAnalysis_DLL.csproj.CoreCompileInputs.cache
+C:\Users\GapTech\Documents\Repositories\New folder\Pinch Analysis\PinchAnalysis_DLL\obj\Debug\PinchAnalysis_DLL.dll
+C:\Users\GapTech\Documents\Repositories\New folder\Pinch Analysis\PinchAnalysis_DLL\obj\Debug\PinchAnalysis_DLL.pdb
+C:\Users\Amira\Documents\pinch_web_api\PinchAnalysis_DLL\bin\Debug\PinchAnalysis_DLL.dll
+C:\Users\Amira\Documents\pinch_web_api\PinchAnalysis_DLL\bin\Debug\PinchAnalysis_DLL.pdb
+C:\Users\Amira\Documents\pinch_web_api\PinchAnalysis_DLL\obj\Debug\PinchAnalysis_DLL.csproj.CoreCompileInputs.cache
+C:\Users\Amira\Documents\pinch_web_api\PinchAnalysis_DLL\obj\Debug\PinchAnalysis_DLL.dll
+C:\Users\Amira\Documents\pinch_web_api\PinchAnalysis_DLL\obj\Debug\PinchAnalysis_DLL.pdb
+C:\Users\Amira\Documents\pinch_web_api\PinchAnalysis_DLL\bin\Debug\System.Web.Cors.dll
+C:\Users\Ahmed\Documents\REPO\Pinch-Analysis\PinchAnalysis_DLL\bin\Debug\PinchAnalysis_DLL.dll.config
+C:\Users\Ahmed\Documents\REPO\Pinch-Analysis\PinchAnalysis_DLL\bin\Debug\PinchAnalysis_DLL.dll
+C:\Users\Ahmed\Documents\REPO\Pinch-Analysis\PinchAnalysis_DLL\bin\Debug\PinchAnalysis_DLL.pdb
+C:\Users\Ahmed\Documents\REPO\Pinch-Analysis\PinchAnalysis_DLL\bin\Debug\Microsoft.Owin.Cors.dll
+C:\Users\Ahmed\Documents\REPO\Pinch-Analysis\PinchAnalysis_DLL\bin\Debug\Microsoft.Owin.dll
+C:\Users\Ahmed\Documents\REPO\Pinch-Analysis\PinchAnalysis_DLL\bin\Debug\Owin.dll
+C:\Users\Ahmed\Documents\REPO\Pinch-Analysis\PinchAnalysis_DLL\bin\Debug\System.Web.Cors.dll
+C:\Users\Ahmed\Documents\REPO\Pinch-Analysis\PinchAnalysis_DLL\bin\Debug\Microsoft.Owin.xml
+C:\Users\Ahmed\Documents\REPO\Pinch-Analysis\PinchAnalysis_DLL\bin\Debug\Microsoft.Owin.Cors.xml
+C:\Users\Ahmed\Documents\REPO\Pinch-Analysis\PinchAnalysis_DLL\obj\Debug\PinchAnalysis_DLL.csproj.CoreCompileInputs.cache
+C:\Users\Ahmed\Documents\REPO\Pinch-Analysis\PinchAnalysis_DLL\obj\Debug\PinchAnalysis_DLL.csproj.CopyComplete
+C:\Users\Ahmed\Documents\REPO\Pinch-Analysis\PinchAnalysis_DLL\obj\Debug\PinchAnalysis_DLL.dll
+C:\Users\Ahmed\Documents\REPO\Pinch-Analysis\PinchAnalysis_DLL\obj\Debug\PinchAnalysis_DLL.pdb
+C:\Users\Amira\Documents\pinch_web_api\PinchAnalysis_DLL\bin\Debug\PinchAnalysis_DLL.dll.config
+C:\Users\Amira\Documents\pinch_web_api\PinchAnalysis_DLL\bin\Debug\Microsoft.Owin.Cors.dll
+C:\Users\Amira\Documents\pinch_web_api\PinchAnalysis_DLL\bin\Debug\Microsoft.Owin.dll
+C:\Users\Amira\Documents\pinch_web_api\PinchAnalysis_DLL\bin\Debug\Owin.dll
+C:\Users\Amira\Documents\pinch_web_api\PinchAnalysis_DLL\bin\Debug\Microsoft.Owin.xml
+C:\Users\Amira\Documents\pinch_web_api\PinchAnalysis_DLL\bin\Debug\Microsoft.Owin.Cors.xml
+C:\Users\Ahmed\Documents\REPO\Pinch-Analysis\PinchAnalysis_DLL\bin\Debug\EntityFramework.dll
+C:\Users\Ahmed\Documents\REPO\Pinch-Analysis\PinchAnalysis_DLL\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Ahmed\Documents\REPO\Pinch-Analysis\PinchAnalysis_DLL\bin\Debug\MySql.Data.dll
+C:\Users\Ahmed\Documents\REPO\Pinch-Analysis\PinchAnalysis_DLL\bin\Debug\MySql.Data.Entity.EF6.dll
+C:\Users\Ahmed\Documents\REPO\Pinch-Analysis\PinchAnalysis_DLL\bin\Debug\EntityFramework.xml
+C:\Users\Ahmed\Documents\REPO\Pinch-Analysis\PinchAnalysis_DLL\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Ahmed\Documents\REPO\Pinch-Analysis\PinchAnalysis_DLL\obj\Debug\PinchAnalysis_DLL.csprojAssemblyReference.cache
+C:\Users\GapTech\Documents\Repositories\Pinch-Analysis\PinchAnalysis_DLL\bin\Debug\PinchAnalysis_DLL.dll.config
+C:\Users\GapTech\Documents\Repositories\Pinch-Analysis\PinchAnalysis_DLL\bin\Debug\PinchAnalysis_DLL.dll
+C:\Users\GapTech\Documents\Repositories\Pinch-Analysis\PinchAnalysis_DLL\bin\Debug\PinchAnalysis_DLL.pdb
+C:\Users\GapTech\Documents\Repositories\Pinch-Analysis\PinchAnalysis_DLL\bin\Debug\EntityFramework.dll
+C:\Users\GapTech\Documents\Repositories\Pinch-Analysis\PinchAnalysis_DLL\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\GapTech\Documents\Repositories\Pinch-Analysis\PinchAnalysis_DLL\bin\Debug\Microsoft.Owin.Cors.dll
+C:\Users\GapTech\Documents\Repositories\Pinch-Analysis\PinchAnalysis_DLL\bin\Debug\Microsoft.Owin.dll
+C:\Users\GapTech\Documents\Repositories\Pinch-Analysis\PinchAnalysis_DLL\bin\Debug\MySql.Data.dll
+C:\Users\GapTech\Documents\Repositories\Pinch-Analysis\PinchAnalysis_DLL\bin\Debug\MySql.Data.Entity.EF6.dll
+C:\Users\GapTech\Documents\Repositories\Pinch-Analysis\PinchAnalysis_DLL\bin\Debug\Owin.dll
+C:\Users\GapTech\Documents\Repositories\Pinch-Analysis\PinchAnalysis_DLL\bin\Debug\System.Web.Cors.dll
+C:\Users\GapTech\Documents\Repositories\Pinch-Analysis\PinchAnalysis_DLL\bin\Debug\EntityFramework.xml
+C:\Users\GapTech\Documents\Repositories\Pinch-Analysis\PinchAnalysis_DLL\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\GapTech\Documents\Repositories\Pinch-Analysis\PinchAnalysis_DLL\bin\Debug\Microsoft.Owin.xml
+C:\Users\GapTech\Documents\Repositories\Pinch-Analysis\PinchAnalysis_DLL\bin\Debug\Microsoft.Owin.Cors.xml
+C:\Users\GapTech\Documents\Repositories\Pinch-Analysis\PinchAnalysis_DLL\obj\Debug\PinchAnalysis_DLL.csproj.CoreCompileInputs.cache
+C:\Users\GapTech\Documents\Repositories\Pinch-Analysis\PinchAnalysis_DLL\obj\Debug\PinchAnalysis_DLL.csproj.CopyComplete
+C:\Users\GapTech\Documents\Repositories\Pinch-Analysis\PinchAnalysis_DLL\obj\Debug\PinchAnalysis_DLL.dll
+C:\Users\GapTech\Documents\Repositories\Pinch-Analysis\PinchAnalysis_DLL\obj\Debug\PinchAnalysis_DLL.pdb
+C:\Users\GapTech\Documents\Repositories\Pinch-Analysis\PinchAnalysis_DLL\obj\Debug\PinchAnalysis_DLL.csprojResolveAssemblyReference.cache
+C:\Users\GapTech\Documents\Repositories\Pinch-Analysis\PinchAnalysis_DLL\bin\Debug\MoreLinq.dll
+C:\Users\GapTech\Documents\Repositories\Pinch-Analysis\PinchAnalysis_DLL\bin\Debug\System.ValueTuple.dll
+C:\Users\GapTech\Documents\Repositories\Pinch-Analysis\PinchAnalysis_DLL\bin\Debug\MoreLinq.xml
+C:\Users\GapTech\Documents\Repositories\Pinch-Analysis\PinchAnalysis_DLL\bin\Debug\System.ValueTuple.xml

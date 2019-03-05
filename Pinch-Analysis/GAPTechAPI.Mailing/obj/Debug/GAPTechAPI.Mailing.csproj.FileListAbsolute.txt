@@ -1,0 +1,33 @@
+C:\Users\Amira\Desktop\WebAPIClone\Web-API-Solution\GAPTechAPI.Mailing\bin\Debug\GAPTechAPI.Mailing.dll
+C:\Users\Amira\Desktop\WebAPIClone\Web-API-Solution\GAPTechAPI.Mailing\bin\Debug\GAPTechAPI.Mailing.pdb
+C:\Users\Amira\Desktop\WebAPIClone\Web-API-Solution\GAPTechAPI.Mailing\obj\Debug\GAPTechAPI.Mailing.csproj.CoreCompileInputs.cache
+C:\Users\Amira\Desktop\WebAPIClone\Web-API-Solution\GAPTechAPI.Mailing\obj\Debug\GAPTechAPI.Mailing.dll
+C:\Users\Amira\Desktop\WebAPIClone\Web-API-Solution\GAPTechAPI.Mailing\obj\Debug\GAPTechAPI.Mailing.pdb
+C:\Users\Amira\Desktop\WebAPIClone\Web-API-Solution\GAPTechAPI.Mailing\obj\Debug\GAPTechAPI.Mailing.csprojResolveAssemblyReference.cache
+C:\Users\Amira\Documents\pinch_web_api\GAPTechAPI.Mailing\bin\Debug\GAPTechAPI.Mailing.dll
+C:\Users\Amira\Documents\pinch_web_api\GAPTechAPI.Mailing\bin\Debug\GAPTechAPI.Mailing.pdb
+C:\Users\Amira\Documents\pinch_web_api\GAPTechAPI.Mailing\obj\Debug\GAPTechAPI.Mailing.csproj.CoreCompileInputs.cache
+C:\Users\Amira\Documents\pinch_web_api\GAPTechAPI.Mailing\obj\Debug\GAPTechAPI.Mailing.dll
+C:\Users\Amira\Documents\pinch_web_api\GAPTechAPI.Mailing\obj\Debug\GAPTechAPI.Mailing.pdb
+<<<<<<< HEAD
+C:\Users\GapTech\Documents\Repositories\Pinch-Analysis\GAPTechAPI.Mailing\bin\Debug\GAPTechAPI.Mailing.dll
+C:\Users\GapTech\Documents\Repositories\Pinch-Analysis\GAPTechAPI.Mailing\bin\Debug\GAPTechAPI.Mailing.pdb
+C:\Users\GapTech\Documents\Repositories\Pinch-Analysis\GAPTechAPI.Mailing\obj\Debug\GAPTechAPI.Mailing.csprojResolveAssemblyReference.cache
+C:\Users\GapTech\Documents\Repositories\Pinch-Analysis\GAPTechAPI.Mailing\obj\Debug\GAPTechAPI.Mailing.csproj.CoreCompileInputs.cache
+C:\Users\GapTech\Documents\Repositories\Pinch-Analysis\GAPTechAPI.Mailing\obj\Debug\GAPTechAPI.Mailing.dll
+C:\Users\GapTech\Documents\Repositories\Pinch-Analysis\GAPTechAPI.Mailing\obj\Debug\GAPTechAPI.Mailing.pdb
+=======
+C:\Users\Amira\Documents\pinch_web_api\GAPTechAPI.Mailing\obj\Debug\GAPTechAPI.Mailing.csprojResolveAssemblyReference.cache
+>>>>>>> cebaebd1d5d07b999cb8d313e29b7459baac935d
+C:\Users\GapTech\Documents\Repositories\Pinch-Analysis\GAPTechAPI.Mailing\bin\Debug\GAPTechAPI.Mailing.dll.config
+C:\Users\GapTech\Documents\Repositories\Pinch-Analysis\GAPTechAPI.Mailing\bin\Debug\EntityFramework.dll
+C:\Users\GapTech\Documents\Repositories\Pinch-Analysis\GAPTechAPI.Mailing\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\GapTech\Documents\Repositories\Pinch-Analysis\GAPTechAPI.Mailing\bin\Debug\MySql.Data.dll
+C:\Users\GapTech\Documents\Repositories\Pinch-Analysis\GAPTechAPI.Mailing\bin\Debug\MySql.Data.Entity.EF6.dll
+C:\Users\GapTech\Documents\Repositories\Pinch-Analysis\GAPTechAPI.Mailing\bin\Debug\EntityFramework.xml
+C:\Users\GapTech\Documents\Repositories\Pinch-Analysis\GAPTechAPI.Mailing\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\GapTech\Documents\Repositories\Pinch-Analysis\GAPTechAPI.Mailing\obj\Debug\GAPTechAPI.Mailing.csproj.CopyComplete
+C:\Users\GapTech\Documents\Repositories\Pinch-Analysis\GAPTechAPI.Mailing\bin\Debug\MoreLinq.dll
+C:\Users\GapTech\Documents\Repositories\Pinch-Analysis\GAPTechAPI.Mailing\bin\Debug\System.ValueTuple.dll
+C:\Users\GapTech\Documents\Repositories\Pinch-Analysis\GAPTechAPI.Mailing\bin\Debug\MoreLinq.xml
+C:\Users\GapTech\Documents\Repositories\Pinch-Analysis\GAPTechAPI.Mailing\bin\Debug\System.ValueTuple.xml

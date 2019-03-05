@@ -1,0 +1,53 @@
+{
+    "name": "demo2",
+    "version": "0.0.0",
+    "license": "MIT",
+    "scripts": {
+        "ng": "ng",
+        "start": "ng serve",
+        "build": "ng build --prod",
+        "test": "ng test",
+        "lint": "ng lint",
+        "e2e": "ng e2e",
+        "postinstall": "npm run tsformat",
+        "tsformat": "tsfmt -r"
+    },
+    "private": true,
+    "dependencies": {
+        "@angular/animations": "^5.2.11",
+        "@angular/cdk": "^5.2.5",
+        "@angular/common": "^5.2.11",
+        "@angular/compiler": "^5.2.11",
+        "@angular/core": "^5.2.11",
+        "@angular/forms": "^5.2.11",
+        "@angular/http": "^5.2.11",
+        "@angular/material": "^5.2.5",
+        "@angular/platform-browser": "^5.2.11",
+        "@angular/platform-browser-dynamic": "^5.2.11",
+        "@angular/router": "^5.2.11",
+        "@ng-bootstrap/ng-bootstrap": "^1.0.0-beta.3",
+        "@toverux/ngx-sweetalert2": "^4.0.0",
+        "@types/jquery": "^3.3.22",
+        "angular2-wizard": "^0.4.0",
+        "classlist.js": "^1.1.20150312",
+        "core-js": "^2.5.7",
+        "enhanced-resolve": "^3.3.0",
+        "jquery": "^3.2.1",
+        "ng-recaptcha": "^3.0.5",
+        "ng2-nvd3": "^2.0.0",
+        "rxjs": "^5.5.11",
+        "save-svg-as-png": "^1.4.6",
+        "source-map": "^0.7.3",
+        "stimulsoft-reports-js": "^2018.3.3",
+        "sweetalert2": "^7.28.11",
+        "typescript-formatter": "^5.2.0",
+        "xlsx": "^0.13.4",
+        "zone.js": "^0.8.19"
+    },
+    "devDependencies": {
+        "@angular/cli": "^1.7.4",
+        "@angular/compiler-cli": "^5.2.11",
+        "@angular/language-service": "^5.2.11",
+        "typescript": "^2.9.2"
+    }
+}

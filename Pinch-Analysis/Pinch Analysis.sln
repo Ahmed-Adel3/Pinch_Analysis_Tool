@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.16
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "API", "API\API.csproj", "{773B3434-7495-487B-9AEF-C3E42991ED83}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PinchAnalysis_DLL", "PinchAnalysis_DLL\PinchAnalysis_DLL.csproj", "{296D22E7-4043-4CB9-9018-558276DC6B22}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PinchDB", "PinchDB\PinchDB.csproj", "{A64ACE7A-67E6-410F-8915-B58C68C3C6BA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GAPTechAPI.Mailing", "GAPTechAPI.Mailing\GAPTechAPI.Mailing.csproj", "{3D82A6C4-63EF-47B8-AE80-A40EA5F616CF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{773B3434-7495-487B-9AEF-C3E42991ED83}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{773B3434-7495-487B-9AEF-C3E42991ED83}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{773B3434-7495-487B-9AEF-C3E42991ED83}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{773B3434-7495-487B-9AEF-C3E42991ED83}.Release|Any CPU.Build.0 = Release|Any CPU
+		{296D22E7-4043-4CB9-9018-558276DC6B22}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{296D22E7-4043-4CB9-9018-558276DC6B22}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{296D22E7-4043-4CB9-9018-558276DC6B22}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{296D22E7-4043-4CB9-9018-558276DC6B22}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A64ACE7A-67E6-410F-8915-B58C68C3C6BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A64ACE7A-67E6-410F-8915-B58C68C3C6BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A64ACE7A-67E6-410F-8915-B58C68C3C6BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A64ACE7A-67E6-410F-8915-B58C68C3C6BA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3D82A6C4-63EF-47B8-AE80-A40EA5F616CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D82A6C4-63EF-47B8-AE80-A40EA5F616CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D82A6C4-63EF-47B8-AE80-A40EA5F616CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D82A6C4-63EF-47B8-AE80-A40EA5F616CF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {762158BC-E37B-4FD8-86BF-58346264DEAD}
+	EndGlobalSection
+EndGlobal

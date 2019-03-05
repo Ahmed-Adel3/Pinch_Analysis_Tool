@@ -1,0 +1,136 @@
+<form [formGroup]="optimizeForm" (ngSubmit)="SaveData(optimizeForm.value)">
+    <table class="table text-center">
+        <tbody>
+            <tr class="table-info">
+                <td colspan="6">
+                    <p>Capital Cost per Unit Area: </p>
+                </td>
+                <td colspan="2"></td>
+                <td colspan="2">
+                    <input type="number" class="form-control" placeholder="Capital Cost" formControlName="CapitalCost">
+                    <div *ngIf="optimizeForm.controls.CapitalCost.hasError('required')&&optimizeForm.controls.CapitalCost.touched " class="alert alert-danger">
+                        Capital Cost is Required
+                    </div>
+                </td>
+                <td colspan="2"></td>
+            </tr>
+            <tr class="table-info">
+                    <td colspan="6">
+                        <p>Life Time (in Hours): </p>
+                    </td>
+                    <td colspan="2"></td>
+                    <td colspan="2">
+                        <input type="number" class="form-control" placeholder="Life Time" formControlName="LifeTime">
+                        <div *ngIf="optimizeForm.controls.LifeTime.hasError('required')&&optimizeForm.controls.LifeTime.touched " class="alert alert-danger">
+                            Life Time is Required
+                        </div>
+                    </td>
+                    <td colspan="2"></td>
+                </tr>
+        </tbody>
+        <tbody>
+            <tr>
+                <td colspan="6">
+                    <p>
+                        Add cost to Hot Utilities
+                    </p>
+                    <table class="table m-table m-table--head-bg-brand">
+                        <thead>
+                            <tr>
+                                <th data-toggle="m-popover" data-placement="top" data-content="Hot Utility Number">#</th>
+                                <th>Name</th>
+                                <th >Cost/Hr</th>
+                            </tr>
+                        </thead>
+                        <tbody formArrayName="HotUtilitiesCost" *ngFor="let stream of optimizeForm.get('HotUtilitiesCost')['controls']; let i = index">
+                            <tr [formGroupName]="i">
+                                <td>{{i+1}}</td>
+                                <td>
+                                    <input type="text" formControlName="Name" class="form-control" disabled>
+                                </td>
+                                <td>
+                                    <input type="number" formControlName="Cost" class="form-control" placeholder="Cost {{i+1}}">
+                                </td>
+                            </tr>
+                            <tr [formGroupName]="i" *ngIf="optimizeForm.get(['HotUtilitiesCost',i,'Cost']).hasError('required')&& optimizeForm.get(['HotUtilitiesCost',i,'Cost']).touched ">
+                                <td colspan="5">
+                                    <ul>
+                                        <li class="alert alert-danger" > Cost is Required </li>
+                                    </ul>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+
+                <td colspan="6">
+                    <p>
+                        Add cost to Cold Utilities
+                    </p>
+                    <table class="table m-table m-table--head-bg-brand">
+                        <thead>
+                            <tr>
+                                <th data-toggle="m-popover" data-placement="top" data-content="Cold Utility Number">#</th>
+                                <th>Name</th>
+                                <th >Cost/Hr</th>
+                            </tr>
+                        </thead>
+                        <tbody formArrayName="ColdUtilitiesCost" *ngFor="let stream of optimizeForm.get('ColdUtilitiesCost')['controls']; let i = index">
+                            <tr [formGroupName]="i">
+                                <td>{{i+1}}</td>
+                                <td>
+                                    <input type="text" formControlName="Name" class="form-control" disabled>
+                                </td>
+                                <td>
+                                    <input type="number" formControlName="Cost" class="form-control" placeholder="Cost {{i+1}}">
+                                </td>
+                            </tr>
+                            <tr [formGroupName]="i" *ngIf="optimizeForm.get(['ColdUtilitiesCost',i,'Cost']).hasError('required')&& optimizeForm.get(['ColdUtilitiesCost',i,'Cost']).touched ">
+                                <td colspan="5">
+                                    <ul>
+                                        <li class="alert alert-danger" > Cost is Required </li>
+                                    </ul>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+                
+
+            </tr>
+            <tr>
+                <td colspan="12">
+                    <input type="submit" value="Submit" class="btn btn-primary btn" [disabled]="!optimizeForm.valid" />
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</form>
+
+<div *ngIf="chartData !== undefined">
+<div >
+    <nvd3 [options]="OptimumTDiagramOptions" [data]="OptimumTDiagramData" ></nvd3>
+</div>
+
+<div class="m-portlet m-portlet--brand m-portlet--head-solid-bg">
+    <div class="m-portlet__head">
+        <div class="m-portlet__head-caption">
+            <div class="m-portlet__head-title">
+                <span class="m-portlet__head-icon">
+                    <i class="flaticon-placeholder-2"></i>
+                </span>
+                <h3 class="m-portlet__head-text">
+                    Results
+                </h3>
+            </div>			
+        </div>
+    </div>
+    <div class="m-portlet__body">
+       Optimum Approach Temperature = <b> {{this.chartData.optimumT.x}} {{Units.temperature}}</b>  <br/>
+        at this approach temperature, Total Cost per hour will be <b> {{this.chartData.optimumT.y.toFixed(2)}} $/h </b> 
+    </div>
+    <div class="m-portlet__foot">
+        <button type="submit" class="btn btn-brand" (click)="LoadOptimumCase()">Solve Case with Optimum Approach Temperature </button>
+    </div>
+</div>
+</div>

@@ -1,0 +1,101 @@
+
+<div class="bodyClass m-portlet m-portlet--head-overlay m-portlet--full-height  m-portlet--rounded-force ">
+    <div class="m-portlet__body ">
+        <div>
+                <div class="type-js headline ">
+                        <div class="m-widget27 m-portlet-fit--sides">
+                              <div class="m-widget27__pic ">		 					 
+                                    <!-- <img src="./assets/app/media/img/bg/bg-1.jpg" alt>  -->
+                                    <h1 class="text-js m-widget27__title m--font-light" style="display:grid;background-color:#0f061dba"> Welcome to ENPIRE Pinch Analysis Tool By GAPTECH Energy</h1>
+                                    <div style="font-size:20px; display:grid;background-color:#0f061dba">Pinch analysis is a methodology for minimizing energy consumption of chemical processes by calculating thermodynamically feasible energy targets (or minimum energy consumption) and achieving them by optimizing heat recovery systems, energy supply methods and process operating conditions. It is also referred to as process integration, heat integration, energy integration or pinch technology.
+                                    </div>
+                                    <div class="m-widget27__btn">
+                                            <button type="button" routerLink="/pinchV1/byStream" class="btn btn-lg m-btn--pill m-btn--air m-btn m-btn--gradient-from-danger m-btn--gradient-to-warning">Stream Input</button>
+                                            <button type="button" routerLink="/pinchV1/byExchanger" class="btn btn-lg m-btn--pill m-btn--air m-btn m-btn--gradient-from-danger m-btn--gradient-to-warning">Heat Exchanger Input</button>
+                                    </div>
+                                </div>
+
+                        </div>
+                </div>
+        </div>
+    </div>
+    
+
+</div>
+<div class="m-content">
+
+    <div class="row">
+        <div class="col-xl-10">
+            <div class="m-portlet m-portlet--responsive-mobile m-portlet--brand m-portlet--head-solid-bg m-portlet--bordered">
+                    <div class="m-portlet__head">
+                        <div class="m-portlet__head-caption">
+                            <div class="m-portlet__head-title">
+                                <span class="m-portlet__head-icon">
+                                    <i class="flaticon-diagram"></i>
+                                </span>
+                                <h3 class="m-portlet__head-text">
+                                    Your Cases
+                                </h3>
+                            </div>			
+                        </div>
+                        <div class="m-portlet__head-tools">
+                        
+                        </div>
+                    </div>
+                    <div class="m-portlet__body" style="padding: 4px">
+                            <table class="table m-table m-table--head-bg-brand">
+                                    <thead>
+                                      <tr>
+                                            <th>#</th>
+                                            <th>Case Name</th>
+                                            <th>Description</th>
+                                            <th>Date Created</th>
+                                            <th>Load Case</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                      <tr *ngFor="let case of casesData; let i=index">
+                                            <th scope="row">{{i+1}}</th>
+                                            <td>{{case.CaseName}}</td>
+                                            <td> 
+                                                <textarea class="form-control m-input m-input--solid" rows="1" disabled>{{case.CaseDescription}}</textarea>
+                                            </td>
+                                            <td>{{case.CaseDate}}</td>
+                                            <td>
+                                                <button (click)="loadCase(case.Id)" class="btn m-btn btn-success m-btn--pill">Load</button>
+                                            </td>
+                                      </tr>
+                                      <tr *ngIf="(casesData !== undefined && casesData.length === 0)"><td colspan="4">You have no saved cases</td></tr>
+                                    </tbody>
+                            </table>
+                    </div>
+                </div>
+            </div>
+        <div class="col-xl-2">
+                <div class="m-portlet m-portlet--responsive-mobile m-portlet--brand m-portlet--head-solid-bg m-portlet--bordered">
+                        <div class="m-portlet__head">
+                            <div class="m-portlet__head-caption">
+                                <div class="m-portlet__head-title">
+                                    <span class="m-portlet__head-icon">
+                                        <i class="la la-flask"></i>
+                                    </span>
+                                    <h3 class="m-portlet__head-text">
+                                        Test Cases
+                                    </h3>
+                                </div>			
+                            </div>
+                            <div class="m-portlet__head-tools">
+                            
+                            </div>
+                        </div>
+                        <div class="m-portlet__body" style="align-items: center;justify-content: center;">
+                                <button type="button" (click)="V1Sample1()" class="btn m-btn--pill    btn-success">Test Case 1</button> <br/><br/>                   
+                                <button type="button" (click)="V1Sample2()" class="btn m-btn--pill    btn-success">Test Case 2</button> <br/><br/> 
+                                <button type="button" (click)="V1Sample3()" class="btn m-btn--pill    btn-success">Test Case 3</button> <br/><br/> 
+                                <button type="button" (click)="V1Sample4()" class="btn m-btn--pill    btn-success">Test Case 4</button> <br/><br/> 
+                        </div>
+                </div>
+        </div>
+</div>
+
+

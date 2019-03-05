@@ -1,0 +1,83 @@
+// CSS Needed to make it work (Wrote not using SCSS at all copy and paste away)
+// copy and paste into your CSS and the cursor should appear when typing begins
+.text-js{
+    opacity: 0;
+  }
+  .cursor{
+    display: block;
+    position: absolute;
+    height: 100%;
+    top: 0;
+    right: -5px;
+    width: 2px;
+
+    background-color: white;
+    z-index: 1;
+    animation: flash 0.5s none infinite alternate;
+  }
+  @keyframes flash{
+    0%{
+      opacity: 1;
+    }
+    100%{
+      opacity: 0;
+    }
+  }
+  
+  
+  
+  
+  
+  // Rest of CSS (Purely for this pen)
+  
+  .bodyClass{
+    //background: linear-gradient(135deg,#262734,#9D1BB2);
+    background: url(/assets/app/media/img/bg/bg-1.jpg)  ;
+    height: 50vh;
+    display: flex;
+    align-items: bottom;
+    //justify-content: center;
+  }
+  // Text Can be styled just like normal
+  .headline{
+    margin: 20px;
+    color: white;
+    font-size: 50px;
+    text-align: center;
+    h1{
+      letter-spacing: 1.6px;
+      font-weight: 600;
+    }
+  }
+  
+  .credit{
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    text-decoration: none;
+  }
+  
+  
+  
+  
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
