@@ -41,7 +41,7 @@
         "stimulsoft-reports-js": "^2024.3.6",
         "sweetalert2": "^7.28.11",
         "typescript-formatter": "^5.2.0",
-        "xlsx": "^0.13.4",
+        "xlsx": "^0.18.5",
         "zone.js": "^0.8.19"
     },
     "devDependencies": {
